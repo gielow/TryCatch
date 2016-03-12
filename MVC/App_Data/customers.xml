@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCustomer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Customer>
+    <Id>1</Id>
+    <Title>Mr.</Title>
+    <FirstName>André 01</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>Primavera st</Address>
+    <Email>andre.gielow@gmail.com</Email>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+  <Customer>
+    <Id>2</Id>
+    <Title>Mr.</Title>
+    <FirstName>André 02</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>Primavera st</Address>
+    <Email>andre.gielow@gmail.com</Email>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+  <Customer>
+    <Id>3</Id>
+    <Title>Mr.</Title>
+    <FirstName>André 03</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>Primavera st</Address>
+    <Email>andre.gielow@gmail.com</Email>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+  <Customer>
+    <Id>4</Id>
+    <Title>Mr.</Title>
+    <FirstName>André 04</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>Primavera st</Address>
+    <Email>andre.gielow@gmail.com</Email>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+  <Customer>
+    <Id>5</Id>
+    <Title>Mr.</Title>
+    <FirstName>André 05</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>Primavera st</Address>
+    <Email>andre.gielow@gmail.com</Email>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+  <Customer>
+    <Id>6</Id>
+    <Title>Mr.</Title>
+    <FirstName>André 06</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>Primavera st</Address>
+    <Email>andre.gielow@gmail.com</Email>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+  <Customer>
+    <Id>7</Id>
+    <Title>Mr.</Title>
+    <FirstName>André 07</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>Primavera st</Address>
+    <Email>andre.gielow@gmail.com</Email>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+  <Customer>
+    <Id>8</Id>
+    <Title>Mr.</Title>
+    <FirstName>André 08</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>Primavera st</Address>
+    <Email>andre.gielow@gmail.com</Email>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+  <Customer>
+    <Id>9</Id>
+    <Title>Mr.</Title>
+    <FirstName>André 09</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>Primavera st</Address>
+    <Email>andre.gielow@gmail.com</Email>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+  <Customer>
+    <Id>10</Id>
+    <Title>Mr.</Title>
+    <FirstName>André 10</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>Primavera st</Address>
+    <Email>andre.gielow@gmail.com</Email>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+</ArrayOfCustomer>

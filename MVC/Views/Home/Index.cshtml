@@ -1,0 +1,31 @@
+﻿
+
+Page: <input type="number" min="1" value="1" onchange="javascript:loadArticles(this.value)" />
+<table id="articles">
+    <thead>
+        <tr>
+            <th width="150">Description</th>
+            <th width="40">Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody/>
+</table>
+
+<table id="cart">
+    <thead>
+        <tr>
+            <th width="150">Description</th>
+            <th width="40">Price</th>
+            <th width="40">Quantity</th>
+            <th width="40">Total</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody />
+</table>
+
+<button>Checkout</button>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Content/Script/cart.js")
+@Scripts.Render("~/Content/Script/home.index.js")

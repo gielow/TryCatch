@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfArticle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Article>
+    <Id>1</Id>
+    <Description>Article 1</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>2</Id>
+    <Description>Article 2</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>3</Id>
+    <Description>Article 3</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>4</Id>
+    <Description>Article 4</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>5</Id>
+    <Description>Article 5</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>6</Id>
+    <Description>Article 6</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>7</Id>
+    <Description>Article 7</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>8</Id>
+    <Description>Article 8</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>9</Id>
+    <Description>Article 9</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>10</Id>
+    <Description>Article 10</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>11</Id>
+    <Description>Article 11</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>12</Id>
+    <Description>Article 12</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>13</Id>
+    <Description>Article 13</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>14</Id>
+    <Description>Article 14</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>15</Id>
+    <Description>Article 15</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>16</Id>
+    <Description>Article 16</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>17</Id>
+    <Description>Article 17</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>18</Id>
+    <Description>Article 18</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>19</Id>
+    <Description>Article 19</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>20</Id>
+    <Description>Article 20</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>21</Id>
+    <Description>Article 21</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>22</Id>
+    <Description>Article 22</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>23</Id>
+    <Description>Article 23</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>24</Id>
+    <Description>Article 24</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>25</Id>
+    <Description>Article 25</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>26</Id>
+    <Description>Article 26</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>27</Id>
+    <Description>Article 27</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>28</Id>
+    <Description>Article 28</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>29</Id>
+    <Description>Article 29</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>30</Id>
+    <Description>Article 30</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>31</Id>
+    <Description>Article 31</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>32</Id>
+    <Description>Article 32</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>33</Id>
+    <Description>Article 33</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>34</Id>
+    <Description>Article 34</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>35</Id>
+    <Description>Article 35</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>36</Id>
+    <Description>Article 36</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>37</Id>
+    <Description>Article 37</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>38</Id>
+    <Description>Article 38</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>39</Id>
+    <Description>Article 39</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>40</Id>
+    <Description>Article 40</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>41</Id>
+    <Description>Article 41</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>42</Id>
+    <Description>Article 42</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>43</Id>
+    <Description>Article 43</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>44</Id>
+    <Description>Article 44</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>45</Id>
+    <Description>Article 45</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>46</Id>
+    <Description>Article 46</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>47</Id>
+    <Description>Article 47</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>48</Id>
+    <Description>Article 48</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>49</Id>
+    <Description>Article 49</Description>
+    <Price>10</Price>
+  </Article>
+  <Article>
+    <Id>50</Id>
+    <Description>Article 50</Description>
+    <Price>10</Price>
+  </Article>
+</ArrayOfArticle>

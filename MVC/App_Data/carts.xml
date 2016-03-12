@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCart xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Cart>
+    <Guid>52e59b7c-16bd-44b5-85dc-2d5baf32d9b3</Guid>
+    <Items>
+      <CartItem>
+        <Product>
+          <Id>1</Id>
+          <Description>Article 1</Description>
+          <Price>10</Price>
+        </Product>
+        <Quantity>7</Quantity>
+      </CartItem>
+      <CartItem>
+        <Product>
+          <Id>7</Id>
+          <Description>Article 7</Description>
+          <Price>10</Price>
+        </Product>
+        <Quantity>2</Quantity>
+      </CartItem>
+      <CartItem>
+        <Product>
+          <Id>10</Id>
+          <Description>Article 10</Description>
+          <Price>10</Price>
+        </Product>
+        <Quantity>2</Quantity>
+      </CartItem>
+      <CartItem>
+        <Product>
+          <Id>4</Id>
+          <Description>Article 4</Description>
+          <Price>10</Price>
+        </Product>
+        <Quantity>3</Quantity>
+      </CartItem>
+    </Items>
+  </Cart>
+</ArrayOfCart>
