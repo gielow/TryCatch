@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using TC_WebShopCaseMVC.DAO;
 using TC_WebShopCaseMVC.Models;
+using TC.Models;
 
 namespace TC_WebShopCaseMVC.Tests
 {

@@ -1,40 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCart xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Cart>
+    <Guid>78a5c915-7227-4fd8-ae71-1a842dda6123</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>d0de1488-d4c1-4ede-940b-a8038e74dcba</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>03895f11-3965-45df-9dd7-747487fc10d2</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>1971f5c6-a624-4483-a1a5-b08ebf39ea94</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>3e79b43b-ac91-42d2-bdb4-d944d76412b0</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>ff47255e-5fb2-4282-9c7c-b7dcea62b5fc</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>a464ff42-7019-4639-ba9e-f29af098e21e</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>37055adc-154a-4a26-a2d3-efe073c37ea9</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>5b78344b-2f63-4ace-b6e8-020bc95e9dd7</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>5bca412a-5dbe-411d-8cd5-c0e7c38916fd</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>0483e95d-2243-4118-b500-3f19bfe4e641</Guid>
+    <Items />
+  </Cart>
+  <Cart>
     <Guid>52e59b7c-16bd-44b5-85dc-2d5baf32d9b3</Guid>
     <Items>
       <CartItem>
-        <Product>
-          <Id>1</Id>
-          <Description>Article 1</Description>
-          <Price>10</Price>
-        </Product>
         <Quantity>7</Quantity>
       </CartItem>
       <CartItem>
-        <Product>
-          <Id>7</Id>
-          <Description>Article 7</Description>
-          <Price>10</Price>
-        </Product>
         <Quantity>2</Quantity>
       </CartItem>
       <CartItem>
-        <Product>
-          <Id>10</Id>
-          <Description>Article 10</Description>
-          <Price>10</Price>
-        </Product>
-        <Quantity>2</Quantity>
-      </CartItem>
-      <CartItem>
-        <Product>
-          <Id>4</Id>
-          <Description>Article 4</Description>
-          <Price>10</Price>
-        </Product>
         <Quantity>3</Quantity>
       </CartItem>
+      <CartItem>
+        <Quantity>1</Quantity>
+      </CartItem>
+      <CartItem>
+        <Quantity>1</Quantity>
+      </CartItem>
+      <CartItem>
+        <Quantity>1</Quantity>
+      </CartItem>
+      <CartItem>
+        <Quantity>1</Quantity>
+      </CartItem>
+      <CartItem>
+        <Quantity>2</Quantity>
+      </CartItem>
     </Items>
+  </Cart>
+  <Cart>
+    <Guid>42ad9e6d-a6e9-4f0f-bb14-f12d451d3497</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>1d5af773-655e-4fe4-9057-1b56c5403542</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>83264e6e-8020-45b9-aa20-0cacc4d7a669</Guid>
+    <Items />
   </Cart>
 </ArrayOfCart>

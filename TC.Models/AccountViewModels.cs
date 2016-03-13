@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace TC_WebShopCaseMVC.Models
+namespace TC.Models
 {
-    // Models returned by AccountController actions.
-
     public class ExternalLoginViewModel
     {
         public string Name { get; set; }

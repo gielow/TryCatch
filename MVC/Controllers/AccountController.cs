@@ -13,9 +13,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using TC_WebShopCaseMVC.Models;
+using TC.Models;
 using TC_WebShopCaseMVC.Providers;
 using TC_WebShopCaseMVC.Results;
+using TC_WebShopCaseMVC.Models;
 
 namespace TC_WebShopCaseMVC.Controllers
 {

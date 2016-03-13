@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace TC_WebShopCaseMVC.Models
+namespace TC.Models
 {
     public class Article
     {

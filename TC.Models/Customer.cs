@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace TC_WebShopCaseMVC.Models
+namespace TC.Models
 {
     public class Customer
     {
@@ -23,5 +23,6 @@ namespace TC_WebShopCaseMVC.Models
         public string ZipCode { get; set; }
         [DisplayName("House number")]
         public int HouseNumber { get; set; }
+        public List<string> Carts { get; set; }
     }
 }

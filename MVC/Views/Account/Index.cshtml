@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>
+@{
+    ViewBag.Title = "Usuários";
+}
+
+<h2>Usuários</h2>
+<hr />
+
+<p style="float: right">
+    <a class="glyphicon glyphicon-plus" data-url="@Url.Action("Register", "Account")" style="cursor: pointer" onclick="showModal(this)"></a>
+</p>
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayName("User")
+        </th>
+    </tr>
+
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td style="width: 110px">
+                @Html.ActionLink(" ", "Manage", new { userName = @user.UserName }, new { @class = "glyphicon glyphicon-edit" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => user.UserName)
+            </td>
+        </tr>
+    }
+</table>

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using TC_WebShopCaseMVC.DAO;
 
-namespace TC_WebShopCaseMVC.Models
+namespace TC.Models
 {
     public class Cart
     {
@@ -18,14 +17,9 @@ namespace TC_WebShopCaseMVC.Models
             Items = new List<CartItem>();
         }
 
-        public void AddArticle(int productId, int quantity)
+        public void AddArticle(Article article, int quantity)
         {
-            var product = DB.Instance.Articles.FirstOrDefault(a => a.Id == productId);
-
-            if (product == null)
-                throw new Exception(string.Format("Product id {0} not found.", productId));
-
-            var cartItem = Items.FirstOrDefault(i => i.Product.Id == productId) ?? null;
+            var cartItem = Items.FirstOrDefault(i => i.Article == article) ?? null;
 
             if (cartItem != null)
             {
@@ -36,7 +30,7 @@ namespace TC_WebShopCaseMVC.Models
                 cartItem = new CartItem()
                 {
                     Quantity = quantity,
-                    Product = product
+                    Article = article
                 };
 
                 Items.Add(cartItem);
@@ -62,9 +56,9 @@ namespace TC_WebShopCaseMVC.Models
             return this.Guid.Equals(obj2.Guid);
         }
 
-        internal void RemoveArticle(int itemId, int quantity)
+        public void RemoveArticle(int itemId, int quantity)
         {
-            var item = Items.FirstOrDefault(i => i.Product.Id == itemId);
+            var item = Items.FirstOrDefault(i => i.Article.Id == itemId);
 
             if (item != null)
             {
