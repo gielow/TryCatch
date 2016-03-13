@@ -23,26 +23,24 @@ namespace WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string CartGuid = string.Empty;
+
         public MainWindow()
         {
             InitializeComponent();
 
             LoadArticles(0);
+            LoadCart();
 
             btnNext.Click += delegate(object sender, RoutedEventArgs e){ LoadArticles(1); };
             btnPrevious.Click += delegate (object sender, RoutedEventArgs e) { LoadArticles(-1); };
         }
-
-        private void BtnNext_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var obj = new Authentication();
+            var obj = new EcommerceAPI();
             obj.Authenticate();
-        }
+       } 
 
         private void LoadArticles(int factor)
         {
@@ -50,7 +48,7 @@ namespace WPF
             if (pageNumber < 1)
                 return;
 
-            var obj = new Authentication();
+            var obj = new EcommerceAPI();
             obj.GetArticles(LoadArticlesGrid, pageNumber);
             actualPage.Content = pageNumber;
         }
@@ -58,10 +56,22 @@ namespace WPF
         private int LoadArticlesGrid(List<Article> articles)
         {
             dgArticles.Items.Clear();
-            foreach (var article in articles)
-            {
-                dgArticles.Items.Add(article);
-            }
+            articles.ForEach(a => dgArticles.Items.Add(a));
+
+            return 0;
+        }
+
+        private void LoadCart()
+        {
+            var obj = new EcommerceAPI();
+            obj.GetCart(LoadCartGrid, CartGuid);
+        }
+
+        private int LoadCartGrid(Cart cart)
+        {
+            dgCart.Items.Clear();
+            CartGuid = cart.Guid;
+            cart.Items.ForEach(i => dgCart.Items.Add(i));
 
             return 0;
         }
@@ -77,20 +87,27 @@ namespace WPF
                     break;
                 }
 
-
+            var obj = new EcommerceAPI();
+            obj.AddCartItem(LoadCartGrid, this.CartGuid, article.Id);
         }
         
         private void RemoveFromCart(object sender, RoutedEventArgs e)
         {
-            Article article = null;
+            OrderItem item = null;
             for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
                 if (vis is DataGridRow)
                 {
                     var row = (DataGridRow)vis;
-                    article = dgArticles.Items[row.GetIndex()] as Article;
+                    item = dgCart.Items[row.GetIndex()] as OrderItem;
                     break;
                 }
 
+            var obj = new EcommerceAPI();
+            obj.RemoveCartItem(LoadCartGrid, this.CartGuid, item.Article.Id);
+        }
+
+        private void btnCheckout_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

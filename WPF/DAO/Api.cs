@@ -8,7 +8,7 @@ using TC.Models;
 
 namespace WPF.DAO
 {
-    public class Authentication
+    public class EcommerceAPI
     {
         private HttpClient Client()
         {
@@ -24,10 +24,6 @@ namespace WPF.DAO
         {
             using (var client = Client())
             {
-                client.BaseAddress = new Uri("http://localhost/TC/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
                 HttpResponseMessage response = await client.GetAsync(string.Format("api/Article/page/{0}", page));
 
                 if (response.IsSuccessStatusCode)
@@ -35,8 +31,37 @@ namespace WPF.DAO
                     var articles = await response.Content.ReadAsAsync<List<Article>>();
                     loadMethod(articles);
                 }
+            }
+        }
 
-                //return new List<Article>();
+        public async void GetCart(Func<Cart, int> loadMethod, string guid)
+        {
+            using (var client = Client())
+            {
+                HttpResponseMessage response = await client.GetAsync(
+                    string.Format("api/Cart/{0}", string.IsNullOrEmpty(guid) ? "0" : guid));
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var cart = await response.Content.ReadAsAsync<Cart>();
+                    guid = cart.Guid;
+
+                    loadMethod(cart);
+                }
+            }
+        }
+
+        public async void AddCartItem(Func<Cart, int> loadMethod, string guid, int articleId)
+        {
+            using (var client = Client())
+            {
+                HttpResponseMessage response = await client.PutAsync(
+                    string.Format("api/Cart/{0}/Items/{1}/1", string.IsNullOrEmpty(guid) ? "0" : guid, articleId), null);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    GetCart(loadMethod, guid);
+                }
             }
         }
 
@@ -50,6 +75,34 @@ namespace WPF.DAO
             using (var client = Client())
             {
                 var response = await client.PostAsJsonAsync("api/Account/Register", request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    
+                }
+            }
+        }
+
+        public async void RemoveCartItem(Func<Cart, int> loadMethod, string guid, int articleId)
+        {
+            using (var client = Client())
+            {
+                HttpResponseMessage response = await client.DeleteAsync(
+                    string.Format("api/Cart/{0}/Items/{1}/1", string.IsNullOrEmpty(guid) ? "0" : guid, articleId));
+
+                if (response.IsSuccessStatusCode)
+                {
+                    GetCart(loadMethod, guid);
+                }
+            }
+        }
+
+        public async void Register(RegisterBindingModel customer)
+        {
+            using (var client = Client())
+            {
+                HttpResponseMessage response = await client.PutAsync(
+                    "api/Account/Register", customer);
 
                 if (response.IsSuccessStatusCode)
                 {

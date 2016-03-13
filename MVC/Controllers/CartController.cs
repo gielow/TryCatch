@@ -23,7 +23,7 @@ namespace TC_WebShopCaseMVC.Controllers
             }
 
             HttpContext.Session["CartGuid"] = guid;
-            return View(DB.Instance.GetCart(guid).Items);
+            return View(DB.Instance.Carts.FirstOrDefault(c => c.Guid == guid).Items);
         }
         
     }

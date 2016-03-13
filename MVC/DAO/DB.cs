@@ -24,6 +24,7 @@ namespace TC_WebShopCaseMVC.DAO
         private string ArticlesPath { get { return string.Format("{0}/articles.xml", DataPath); } }
         private string CartsPath { get { return string.Format("{0}/carts.xml", DataPath); } }
         private string CustomersPath { get { return string.Format("{0}/customers.xml", DataPath); } }
+        private string OrdersPath { get { return string.Format("{0}/orders.xml", DataPath); } }
 
         private List<Article> _articles;
 
@@ -62,15 +63,16 @@ namespace TC_WebShopCaseMVC.DAO
             }
         }
 
-        public Cart GetCart(string guid)
+        private List<Order> _orders;
+
+        public List<Order> Orders
         {
-            try
+            get
             {
-                return Carts.FirstOrDefault(c => c.Guid.Equals(guid));
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(string.Format("Error at GetCart: {0}", ex.Message), ex);
+                if (_orders == null)
+                    _orders = Serializer.DeSerializeObject<List<Order>>(OrdersPath);
+
+                return _orders;
             }
         }
 

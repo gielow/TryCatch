@@ -24,7 +24,7 @@ namespace TC_WebShopCaseMVC.Controllers
                 DB.Instance.PutCart(new Cart(guid));
             }
 
-            return DB.Instance.GetCart(guid);
+            return DB.Instance.Carts.FirstOrDefault(c => c.Guid == guid);
         }
 
         [HttpPut]
@@ -50,24 +50,16 @@ namespace TC_WebShopCaseMVC.Controllers
 
         [Route("{guid}/Items")]
         [HttpGet]
-        public IEnumerable<CartItem> Items(string guid)
+        public IEnumerable<OrderItem> Items(string guid)
         {
             return this.Get(guid).Items;
         }
         
-        // POST: api/Cart
-        public void Post([FromBody]string value)
+        [HttpPost]
+        [Route("{guid}/Checkout")]
+        public void Checkout(string customerLogin)
         {
-        }
 
-        // PUT: api/Cart/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Cart/5
-        public void Delete(int id)
-        {
         }
     }
 }

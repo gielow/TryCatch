@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TC.Models
 {
-    public class CartItem
+    public class OrderItem
     {
         public Article Article { get; set; }
         public int Quantity { get; set; }

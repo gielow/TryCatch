@@ -14,7 +14,7 @@ namespace TC.Models
         public Cart(string guid)
         {
             Guid = guid;
-            Items = new List<CartItem>();
+            Items = new List<OrderItem>();
         }
 
         public void AddArticle(Article article, int quantity)
@@ -27,7 +27,7 @@ namespace TC.Models
             }
             else
             {
-                cartItem = new CartItem()
+                cartItem = new OrderItem()
                 {
                     Quantity = quantity,
                     Article = article
@@ -38,7 +38,7 @@ namespace TC.Models
         }
 
         public string Guid { get; set; }
-        public List<CartItem> Items { get; set; }
+        public List<OrderItem> Items { get; set; }
         public decimal Total
         {
             get
