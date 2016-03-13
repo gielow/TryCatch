@@ -7,13 +7,50 @@
         xmlns:Http="clr-namespace:System.Net.Http;assembly=System.Net.Http" x:Class="WPF.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="394.143" Width="659.286">
-    <TabControl x:Name="tabArticles" Margin="0,0,2,3" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <TabControl x:Name="tabArticles" Margin="0,28,2,3" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <TabItem Header="Articles">
-            <DataGrid x:Name="dgArticles" Height="100" Width="100"/>
+            <DockPanel LastChildFill="True" Margin="0,0">
+                <WrapPanel>
+                    <Button x:Name="btnPrevious" Content="Previous" Height="25" VerticalAlignment="Top" Width="60" Margin="260,10,0,0"/>
+                    <Label x:Name="actualPage" Margin="0,10,0,0" Content="1"/>
+                    <Button x:Name="btnNext" Content="Next" Height="25" VerticalAlignment="Top" Width="60" Margin="0,10,0,0"/>
+                    <DataGrid x:Name="dgArticles" Margin="10,10,5,3" IsReadOnly="True" Width="625" Height="253">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Width="250" Binding="{Binding Id}" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="Description" Width="250" Binding="{Binding Description}"/>
+                            <DataGridTextColumn Header="Price" Width="80" Binding="{Binding Price}"/>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Add to cart" Click="AddToCart"></Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </WrapPanel>
+            </DockPanel>
         </TabItem>
         <TabItem x:Name="tabCart" Header="Cart" AutomationProperties.ItemStatus="Cart">
-            <Grid Background="#FFE5E5E5"/>
-        </TabItem>        
-        <Button Name="button" Height="100" Width="75"/>
+            <Grid Background="#FFE5E5E5">
+                <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="271" Width="633">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="250" Header="Description" Binding="{Binding Description}"/>
+                        <DataGridTextColumn Width="80" Header="Price" Binding="{Binding Price}"/>
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                        <DataGridTextColumn Width="80" Header="Total" Binding="{Binding Total}"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Remove" Click="RemoveFromCart"></Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="btnCheckout" Content="Checkout" HorizontalAlignment="Left" Margin="10,276,0,0" VerticalAlignment="Top" Width="75"/>
+            </Grid>
+        </TabItem>
+
     </TabControl>
 </Window>

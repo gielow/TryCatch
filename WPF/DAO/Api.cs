@@ -20,7 +20,7 @@ namespace WPF.DAO
             return client;
         }
 
-        public async void GetArticles()
+        public async void GetArticles(Func<List<Article>, int> loadMethod, int page)
         {
             using (var client = Client())
             {
@@ -28,12 +28,15 @@ namespace WPF.DAO
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = await client.GetAsync("api/Article/page/1");
+                HttpResponseMessage response = await client.GetAsync(string.Format("api/Article/page/{0}", page));
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var articles = await response.Content.ReadAsAsync<IEnumerable<Article>>();
+                    var articles = await response.Content.ReadAsAsync<List<Article>>();
+                    loadMethod(articles);
                 }
+
+                //return new List<Article>();
             }
         }
 

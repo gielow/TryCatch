@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TC.Models;
 using WPF.DAO;
 
 namespace WPF
@@ -26,9 +27,15 @@ namespace WPF
         {
             InitializeComponent();
 
-            loadArticlesGrid();
+            LoadArticles(0);
 
-            button.Click += Button_Click;
+            btnNext.Click += delegate(object sender, RoutedEventArgs e){ LoadArticles(1); };
+            btnPrevious.Click += delegate (object sender, RoutedEventArgs e) { LoadArticles(-1); };
+        }
+
+        private void BtnNext_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,25 +44,54 @@ namespace WPF
             obj.Authenticate();
         }
 
-        private void loadArticlesGrid()
+        private void LoadArticles(int factor)
         {
-            var obj = new Authentication();
-            obj.GetArticles();
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Description", typeof(string));
-            dt.Columns.Add("Price", typeof(decimal));
+            var pageNumber = Convert.ToInt32(actualPage.Content) + factor;
+            if (pageNumber < 1)
+                return;
 
-            for (int i = 1; i <= 10; i++)
+            var obj = new Authentication();
+            obj.GetArticles(LoadArticlesGrid, pageNumber);
+            actualPage.Content = pageNumber;
+        }
+
+        private int LoadArticlesGrid(List<Article> articles)
+        {
+            dgArticles.Items.Clear();
+            foreach (var article in articles)
             {
-                /*var a = new DataGridRow();
-                a.
-                row["Description"] = string.Format("Article {0}", i);
-                row["Price"] = 10;
-                dt.Rows.Add(row);*/
+                dgArticles.Items.Add(article);
             }
 
-            dgArticles.Items.Clear();
-            //dgArticles.Items.Add()
+            return 0;
+        }
+
+        private void AddToCart(object sender, RoutedEventArgs e)
+        {
+            Article article = null;
+            for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
+                if (vis is DataGridRow)
+                {
+                    var row = (DataGridRow)vis;
+                    article = dgArticles.Items[row.GetIndex()] as Article;
+                    break;
+                }
+
+
+        }
+        
+        private void RemoveFromCart(object sender, RoutedEventArgs e)
+        {
+            Article article = null;
+            for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
+                if (vis is DataGridRow)
+                {
+                    var row = (DataGridRow)vis;
+                    article = dgArticles.Items[row.GetIndex()] as Article;
+                    break;
+                }
+
+
         }
     }
 }
