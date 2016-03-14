@@ -42,20 +42,5 @@ namespace TC_WebShopCaseMVC.Controllers
 
             return DB.Instance.Articles.Skip((pageNumber.Value - 1) * pageSize.Value).Take(pageSize.Value);
         }
-
-        // POST: api/Artcile
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/Artcile/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Artcile/5
-        public void Delete(int id)
-        {
-        }
     }
 }

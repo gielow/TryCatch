@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.SessionState;
+using TC.Helper;
 
 namespace TC_WebShopCaseMVC
 {
@@ -21,6 +22,12 @@ namespace TC_WebShopCaseMVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            // Source: http://haacked.com/archive/2010/04/15/sending-json-to-an-asp-net-mvc-action-method-argument.aspx 
+            // This must be added to accept JSON as request 
+            ValueProviderFactories.Factories.Add(new JsonValueProviderFactory());
+            // This must be added to accept XML as request 
+            // Source: http://www.nogginbox.co.uk/blog/xml-to-asp.net-mvc-action-method 
+            ValueProviderFactories.Factories.Add(new XmlValueProviderFactory());
         }
         
     }

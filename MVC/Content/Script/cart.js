@@ -1,8 +1,8 @@
 ﻿
-function addItem(articleId, quantity, refreshCallback) {
+function addItem(articleId, quantity) {
 
     // Just ot check if the cart still exists
-    var cartGuid = sessionStorage.getItem("CartGuid") !== null ?
+    var cartGuid = (sessionStorage.getItem("CartGuid") !== null && sessionStorage.getItem("CartGuid").length > 0) ?
         sessionStorage.getItem("CartGuid") : "0";
 
     $.ajax({
@@ -27,15 +27,13 @@ function addItem(articleId, quantity, refreshCallback) {
                 cache: false,
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    //alert('The item has been added to the cart');
-                    refreshCallback();
                 }
             });
         }
     });
 }
 
-function removeItem(articleId, quantity, refreshCallback) {
+function removeItem(articleId, quantity) {
 
     // Just ot check if the cart still exists
     var cartGuid = sessionStorage.getItem("CartGuid") !== null ?
@@ -62,7 +60,6 @@ function removeItem(articleId, quantity, refreshCallback) {
                 cache: false,
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    refreshCallback();
                 }
             });
         }

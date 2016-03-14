@@ -37,7 +37,7 @@ function loadCart() {
 
             $.each(cart.Items, function (index, item) {
                 //alert(item.Id);
-                $('#cart > tbody').append("<tr><td>" + item.Product.Description + "</td><td>" + item.Product.Price + "</td><td>" + item.Quantity + "</td><td>" + item.Total + "</td><td><button onclick='javascript:removeItem(" + item.Product.Id + ", 1, loadCart)'>Remove</button></td></tr>");
+                $('#cart > tbody').append("<tr><td>" + item.Article.Description + "</td><td>" + item.Article.Price + "</td><td>" + item.Quantity + "</td><td>" + item.Total + "</td><td><button onclick='javascript:removeItem(" + item.Article.Id + ", 1, loadCart)'>Remove</button></td></tr>");
             });
 
             $('#cart > tbody').append("<tr><td colspan='2'>Total<td><td>" + cart.Total + "</td></tr>");

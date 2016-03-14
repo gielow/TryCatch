@@ -35,7 +35,7 @@ namespace WPF
                 return;
             }
 
-            var customer = new RegisterBindingModel();
+            /*var customer = new RegisterBindingModel();
             customer.Title = edTitle.Text;
             customer.FirstName = edFirstName.Text;
             customer.LastName = edFirstName.Text;
@@ -45,7 +45,7 @@ namespace WPF
             customer.Email = edEmail.Text;
 
             var api = new EcommerceAPI();
-            api.Register(customer);
+            api.Register(customer);*/
         }
     }
 }

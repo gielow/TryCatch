@@ -28,6 +28,19 @@ namespace TC_WebShopCaseMVC.Controllers
         }
 
         [HttpPut]
+        [Route("{guid}")]
+        public Cart Put(string guid)
+        {
+            if (string.IsNullOrEmpty(guid) || guid == "0")
+            {
+                guid = Guid.NewGuid().ToString();
+                DB.Instance.PutCart(new Cart(guid));
+            }
+
+            return DB.Instance.Carts.FirstOrDefault(c => c.Guid == guid);
+        }
+
+        [HttpPut]
         [Route("{guid}/Items/{itemId:int}/{quantity:int}")]
         public void AddItem(string guid, int itemId, int quantity)
         {

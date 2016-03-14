@@ -1,0 +1,48 @@
+﻿@model TC.Models.Order
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Protocol)</dt>
+        <dd>@Html.DisplayFor(model => model.Protocol)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.DateTime)</dt>
+        <dd>@Html.DisplayFor(model => model.DateTime)</dd>
+
+        <dt>Customer</dt>
+        <dd>@string.Format("{0}, {1}", Model.Customer.LastName, Model.Customer.FirstName)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Status)</dt>
+        <dd>@Html.DisplayFor(model => model.Status)</dd>
+    </dl>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>
+
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>@item.Article.Description</td>
+            <td>$ @item.Article.Price.ToString("C")</td>
+            <td>@item.Quantity</td>
+            <td>$ @item.Total.ToString("C")</td>
+        </tr>
+    }
+    <tr><td colspan="5"></td></tr>
+    <tr>
+        <th colspan="3">Sub total</th>
+        <th>@Model.Items.Sum(m => m.Total).ToString("C")</th>
+    </tr>
+</table>

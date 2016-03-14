@@ -1,0 +1,18 @@
+﻿@model TC.Models.Order
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Cart</h2>
+
+Your order has been completed successfully!
+
+To see more details click in the link below:
+
+@Html.ActionLink("Order", "Details", "Order", new { protocol = @Model.Protocol }, new { })
+
+
+<script>
+    sessionStorage.setItem("CartGuid", '');
+</script>

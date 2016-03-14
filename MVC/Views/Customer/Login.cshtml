@@ -1,0 +1,54 @@
+﻿@model TC.Models.CustomerLoginModel
+
+@{
+    ViewBag.Title = "Log in";
+
+}
+
+<h2>Login</h2>
+<hr />
+@using (Html.BeginForm("Login", "Customer", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+        </div>
+
+
+        @Html.ValidationSummary(true)
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+                or
+                @Html.ActionLink("Register", "Create")
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+    $(window).load(function() {
+        $('#Email').focus();
+    });
+</script>
+}

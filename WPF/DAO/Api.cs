@@ -67,7 +67,7 @@ namespace WPF.DAO
 
         public async void Authenticate()
         {
-            var request = new RegisterBindingModel();
+            /*var request = new RegisterBindingModel();
             request.Email = "andre.gielow@gmail.com";
             request.Password = "test123";
             request.ConfirmPassword = "test123";
@@ -80,7 +80,7 @@ namespace WPF.DAO
                 {
                     
                 }
-            }
+            }*/
         }
 
         public async void RemoveCartItem(Func<Cart, int> loadMethod, string guid, int articleId)
@@ -97,9 +97,9 @@ namespace WPF.DAO
             }
         }
 
-        public async void Register(RegisterBindingModel customer)
+        /*public async void Register(RegisterBindingModel customer)
         {
-            using (var client = Client())
+            /*using (var client = Client())
             {
                 HttpResponseMessage response = await client.PutAsync(
                     "api/Account/Register", customer);
@@ -109,6 +109,6 @@ namespace WPF.DAO
                     
                 }
             }
-        }
+        }*/
     }
 }

@@ -51,6 +51,22 @@ namespace TC_WebShopCaseMVC.DAO
             }
         }
 
+        public void PutCustomer(Customer customer)
+        {
+            try
+            {
+                if (Customers.Contains(customer))
+                    Customers.Remove(customer);
+
+                Customers.Add(customer);
+                Serializer.SerializeObject<List<Customer>>(Customers, CustomersPath);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Error at PutCustomer: {0}", ex.Message), ex);
+            }
+        }
+
         private List<Cart> _carts;
 
         public List<Cart> Carts
@@ -74,6 +90,27 @@ namespace TC_WebShopCaseMVC.DAO
 
                 return _orders;
             }
+        }
+
+        public void PutOrder(Order order)
+        {
+            try
+            {
+                if (order.Protocol <= 0)
+                {
+                    if (Orders.Count > 0)
+                        order.Protocol = Orders.Max(o => o.Protocol) + 1;
+                    else
+                        order.Protocol = 1;
+                }
+
+                Orders.Add(order);
+                Serializer.SerializeObject<List<Order>>(Orders, OrdersPath);
+	        }
+	        catch (Exception ex)
+	        {
+		        throw new Exception(string.Format("Error at PutOrder: {0}", ex.Message), ex);
+	        }
         }
 
         public void PutCart(Cart cart)
