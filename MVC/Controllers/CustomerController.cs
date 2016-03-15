@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using TC.Core;
+using TC.Helper;
 using TC.Models;
 using TC_WebShopCaseMVC.DAO;
 
@@ -36,7 +37,7 @@ namespace TC_WebShopCaseMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_repository.Customers.Exists(c => c.Email == model.Email && c.Password == model.Password))
+                if (ValidateLogin(model.Email, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, false);
                     return RedirectToLocal(returnUrl);
@@ -46,12 +47,35 @@ namespace TC_WebShopCaseMVC.Controllers
                     ModelState.AddModelError("", "Invalid email or password.");
                 }
             }
-            else
+
+            ViewBag.ReturnUrl = returnUrl;
+            return View(model);
+        }
+
+        private bool ValidateLogin(string email, string password)
+        {
+            var loginOk = _repository.Customers.Exists(c => c.Email == email && c.Password == password);
+
+            if (loginOk)
+                FormsAuthentication.SetAuthCookie(email, false);
+
+            return loginOk;
+        }
+
+        [EnableJson]
+        public JsonResult LoginJson(CustomerLoginModel model)
+        {
+            if (ModelState.IsValid)
             {
-                ViewBag.ReturnUrl = returnUrl;
+                if (ValidateLogin(model.Email, model.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(model.Email, false);
+                    //FormsAuthentication.
+                    return Json(string.Empty);
+                }
             }
 
-            return View(model);
+            return Json(string.Empty);
         }
 
         [Authorize]
