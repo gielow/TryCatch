@@ -46,6 +46,10 @@ namespace TC_WebShopCaseMVC.Controllers
                     ModelState.AddModelError("", "Invalid email or password.");
                 }
             }
+            else
+            {
+                ViewBag.ReturnUrl = returnUrl;
+            }
 
             return View(model);
         }
@@ -83,8 +87,6 @@ namespace TC_WebShopCaseMVC.Controllers
                         FormsAuthentication.SetAuthCookie(model.Email, false);
                         return RedirectToLocal(returnUrl);
                     }
-
-                    return RedirectToAction("Details");
                 }
             }
             catch (Exception ex)
@@ -92,6 +94,7 @@ namespace TC_WebShopCaseMVC.Controllers
                 ModelState.AddModelError("", string.Format("Error at creating customer: {0}", ex.Message));
             }
 
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -113,7 +116,7 @@ namespace TC_WebShopCaseMVC.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Article");
             }
         }
         #endregion
