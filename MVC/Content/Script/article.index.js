@@ -1,8 +1,8 @@
 ﻿function loadArticles(pageNumber) {
-    
+    //debugger;
     $.ajax({
         type: 'GET',
-        url: './api/Article/page/' + pageNumber,
+        url: './api/Article/Index/' + pageNumber,
         cache: false,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
@@ -16,5 +16,6 @@
 }
 
 $(document).ready(function () {
+    
     loadArticles(1);
 });

@@ -37,7 +37,7 @@
             <div class="col-md-10">
                 <input type="submit" value="Login" class="btn btn-default" />
                 or
-                @Html.ActionLink("Register", "Create")
+                @Html.ActionLink("Register", "Create", new { returnUrl = ViewBag.ReturnUrl })
             </div>
         </div>
     </div>

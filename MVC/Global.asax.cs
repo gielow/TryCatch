@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.SessionState;
 using TC.Helper;
+using TC.IoC;
 
 namespace TC_WebShopCaseMVC
 {
@@ -16,6 +17,7 @@ namespace TC_WebShopCaseMVC
 
         protected void Application_Start()
         {
+            IoCConfig.Register();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

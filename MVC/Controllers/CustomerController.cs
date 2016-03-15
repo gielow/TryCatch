@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using TC.Core;
 using TC.Models;
 using TC_WebShopCaseMVC.DAO;
 
@@ -13,6 +14,13 @@ namespace TC_WebShopCaseMVC.Controllers
 {
     public class CustomerController : Controller
     {
+        private IRepository _repository;
+
+        public CustomerController(IRepository repository)
+        {
+            _repository = repository;
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -28,7 +36,7 @@ namespace TC_WebShopCaseMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (DB.Instance.Customers.Exists(c => c.Email == model.Email && c.Password == model.Password))
+                if (_repository.Customers.Exists(c => c.Email == model.Email && c.Password == model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, false);
                     return RedirectToLocal(returnUrl);
@@ -45,56 +53,35 @@ namespace TC_WebShopCaseMVC.Controllers
         [Authorize]
         public ActionResult Details()
         {
-            var customer = DB.Instance.Customers.FirstOrDefault(c => c.Email == User.Identity.Name);
+            var customer = _repository.Customers.FirstOrDefault(c => c.Email == User.Identity.Name);
             return View(customer);
         }
-
-        /*[HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
-        {
-            //if (ModelState.IsValid)
-            //{
-            //var usuario = repositorio.Buscar<Usuario>(x => x.Email == model.Email && x.Senha == model.Password);
-            if (model.Email == "andre.gielow@gmail.com")
-            {
-                FormsAuthentication.SetAuthCookie(model.Email, false);
-                return RedirectToLocal(returnUrl);
-            }
-            else
-            {
-                ModelState.AddModelError("", "Usuário ou senha invalido.");
-            }
-            //}
-
-            return View(model);
-        }*/
-        
         
         // GET: Customer/Create
-        public ActionResult Create()
+        public ActionResult Create(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         // POST: Customer/Create
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Create(Customer model)
+        public ActionResult Create(Customer model, string returnUrl)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if (DB.Instance.Customers.Exists(c => c.Email.Equals(model.Email)))
+                    if (_repository.Customers.Exists(c => c.Email.Equals(model.Email)))
                     {
                         ModelState.AddModelError("", "This email address is already registered.");
                     }
                     else
                     {
-                        DB.Instance.PutCustomer(model);
+                        _repository.PutCustomer(model);
                         FormsAuthentication.SetAuthCookie(model.Email, false);
+                        return RedirectToLocal(returnUrl);
                     }
 
                     return RedirectToAction("Details");
@@ -114,7 +101,7 @@ namespace TC_WebShopCaseMVC.Controllers
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Article");
         }
         
         #region Helpers

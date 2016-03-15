@@ -9,7 +9,7 @@ namespace TC.Models
     {
         public Cart()
         {
-
+            Items = new List<OrderItem>();
         }
         public Cart(string guid)
         {

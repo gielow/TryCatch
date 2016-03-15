@@ -1,90 +1,54 @@
 ﻿
 function addItem(articleId, quantity) {
 
-    // Just ot check if the cart still exists
-    var cartGuid = (sessionStorage.getItem("CartGuid") !== null && sessionStorage.getItem("CartGuid").length > 0) ?
-        sessionStorage.getItem("CartGuid") : "0";
-
-    $.ajax({
-        type: 'GET',
-        url: './api/Cart/' + cartGuid,
-        cache: false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-            // Invalid cart, pass 0 to create a new one
-            if (eval(data) === null)
-            {
-                sessionStorage.setItem("CartGuid", "0");
-                addToCart(articleId, quantity);
-                return;
-            }
-            
-            sessionStorage.setItem("CartGuid", eval(data).Guid);
-
-            $.ajax({
-                type: 'PUT',
-                url: './api/Cart/' + sessionStorage.getItem("CartGuid") + '/Items/' + articleId + '/' + quantity,
-                cache: false,
-                contentType: 'application/json; charset=utf-8',
-                success: function (data) {
-                }
-            });
-        }
-    });
+    itemAction(articleId, quantity, 'PUT', 'Article has been successfully added!');
 }
 
 function removeItem(articleId, quantity) {
 
-    // Just ot check if the cart still exists
-    var cartGuid = sessionStorage.getItem("CartGuid") !== null ?
-        sessionStorage.getItem("CartGuid") : "0";
+    itemAction(articleId, quantity, 'DELETE', 'Article has been successfully removed!');
+
+    window.location.reload();
+}
+
+function itemAction(articleId, quantity, action, message) {
+    var cartGuid = getCartGuid();
+    var url = (action == 'DELETE' ?
+        './api/Cart/' + cartGuid + '/Items/Remove/' + articleId + '/' + quantity
+        : './api/Cart/' + cartGuid + '/Items/' + articleId + '/' + quantity);
 
     $.ajax({
-        type: 'GET',
-        url: './api/Cart/' + cartGuid,
+        type: action,
+        url: url,
         cache: false,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-            // Invalid cart, pass 0 to create a new one
-            if (eval(data) === null) {
-                sessionStorage.setItem("CartGuid", "0");
-                addToCart(articleId, quantity);
-                return;
-            }
+            alert(message);
+        },
+        error: function () {
+            return false;
+        }
+    });
+}
 
+function getCartGuid() {
+    if (sessionStorage.getItem("CartGuid") !== null && sessionStorage.getItem("CartGuid").length > 0)
+        return sessionStorage.getItem("CartGuid");
+
+    $.ajax({
+        type: 'GET',
+        url: './api/Cart/Index/New',
+        cache: false,
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
             sessionStorage.setItem("CartGuid", eval(data).Guid);
 
-            $.ajax({
-                type: 'DELETE',
-                url: './api/Cart/' + sessionStorage.getItem("CartGuid") + '/Items/' + articleId + '/' + quantity,
-                cache: false,
-                contentType: 'application/json; charset=utf-8',
-                success: function (data) {
-                }
-            });
+            return eval(data).Guid;
+        },
+        error: function () {
+            console.error('Error at creating new sessin cart');
         }
     });
 }
 
-function getCart() {
-    // Just ot check if the cart still exists
-    var cartGuid = sessionStorage.getItem("CartGuid") !== null ?
-        sessionStorage.getItem("CartGuid") : "0";
-
-    $.ajax({
-        type: 'GET',
-        url: './api/Cart/' + cartGuid,
-        cache: false,
-        async: false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-            // Invalid cart, pass 0 to create a new one
-            if (eval(data) === null) {
-                sessionStorage.setItem("CartGuid", "0");
-                return;
-            }
-
-            return eval(data);
-        }
-    });
-}
+getCartGuid();

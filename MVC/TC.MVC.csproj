@@ -17,7 +17,7 @@
     <AssemblyName>TC_WebShopCaseMVC</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -233,9 +233,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\ArticleApiController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
-    <Compile Include="Controllers\CartApiController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -254,14 +252,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\articles.xml" />
+    <Content Include="App_Data\carts.xml" />
     <Content Include="App_Data\customers.xml" />
+    <Content Include="App_Data\orders.xml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Script\cart.index.js" />
     <Content Include="Content\Script\cart.js" />
     <Content Include="Content\Script\article.index.js" />
-    <Content Include="Content\Script\home.index.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -332,16 +331,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\User\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\User\_RemoveAccountPartial.cshtml" />
-    <Content Include="Views\User\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\User\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\User\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\User\Manage.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\Login.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
@@ -350,9 +339,17 @@
     <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TC.Core\TC.Core.csproj">
+      <Project>{A73E29D8-EC25-49A9-9DA8-500918005D54}</Project>
+      <Name>TC.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TC.Helper\TC.Helper.csproj">
       <Project>{72fe1fef-cdd6-4ebc-ae4b-febe49e3904b}</Project>
       <Name>TC.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TC.IoC\TC.IoC.csproj">
+      <Project>{5fe621c4-d3ba-45ed-abda-b575ad6feab6}</Project>
+      <Name>TC.IoC</Name>
     </ProjectReference>
     <ProjectReference Include="..\TC.Models\TC.Models.csproj">
       <Project>{54910a7b-cdaa-4cd2-9d4f-19dc08cfb568}</Project>
@@ -386,7 +383,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1330</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1330/</IISUrl>
+          <IISUrl>http://localhost/TC</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
