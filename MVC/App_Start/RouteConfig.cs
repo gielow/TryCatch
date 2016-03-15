@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using TC.Helper;
 
 namespace TC_WebShopCaseMVC
 {
@@ -47,19 +48,26 @@ namespace TC_WebShopCaseMVC
                 "api/Cart/{guid}/Checkout",
                 new { controller = "Cart", action = "CheckoutJson" });
 
-            routes.MapRoute("CartItemAddApi",
-                "api/Cart/{guid}/Items/{articleId}/{quantity}",
-                new { controller = "Cart", action = "AddItemJson" });
+            routes.MapRoute("CustomerLoginApi",
+                "api/Customer/Login/{customer}",
+                new { controller = "Customer", action = "LoginJson" });
 
-            routes.MapRoute("CartItemRemoveApi",
-                "api/Cart/{guid}/Items/Remove/{articleId}/{quantity}",
-                new { controller = "Cart", action = "RemoveItemJson" });
+            routes.MapRoute(null,
+                "api/Cart/{guid}/Items/{articleId}/{quantity}",
+                new { controller = "Cart", action = "AddItemJson" },
+                new { httpMethod = new HttpMethodOverrideConstraint("POST", "PUT")
+            });
+
+            routes.MapRoute(null,
+                "api/Cart/{guid}/Items/{articleId}/{quantity}",
+                new { controller = "Cart", action = "RemoveItemJson" },
+                new { httpMethod = new HttpMethodOverrideConstraint("POST", "DELETE")
+            });
 
             /*routes.MapRoute(
                 name: "Api",
                 url: "api/{controller}/{action}",
                 defaults: new {  });*/
-
 
         }
     }

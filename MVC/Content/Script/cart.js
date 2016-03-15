@@ -13,13 +13,10 @@ function removeItem(articleId, quantity) {
 
 function itemAction(articleId, quantity, action, message) {
     var cartGuid = getCartGuid();
-    var url = (action == 'DELETE' ?
-        './api/Cart/' + cartGuid + '/Items/Remove/' + articleId + '/' + quantity
-        : './api/Cart/' + cartGuid + '/Items/' + articleId + '/' + quantity);
-
+    
     $.ajax({
         type: action,
-        url: url,
+        url: './api/Cart/' + cartGuid + '/Items/' + articleId + '/' + quantity,
         cache: false,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
