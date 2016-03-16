@@ -24,11 +24,6 @@ namespace WPF.DAO
 
         public async void GetArticles(Func<List<Article>, int> loadMethod, int page)
         {
-            //var url = "http://localhost/TC/api/Article/Index/1";
-            //var webClient = new WebClient();
-            //var articles = webClient.DownloadData(url);
-            //DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Article>));
-
             using (var client = Client())
             {
                 HttpResponseMessage response = await client.GetAsync(string.Format("api/Article/Index/{0}", page));
@@ -46,7 +41,7 @@ namespace WPF.DAO
             using (var client = Client())
             {
                 HttpResponseMessage response = await client.GetAsync(
-                    string.Format("api/Cart/{0}", string.IsNullOrEmpty(guid) ? "0" : guid));
+                    string.Format("api/Cart/Index/{0}", string.IsNullOrEmpty(guid) ? "0" : guid));
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -90,6 +85,24 @@ namespace WPF.DAO
             }*/
         }
 
+        public async Task<string> NewCart()
+        {
+            using (var client = Client())
+            {
+                HttpResponseMessage response = await client.GetAsync("api/Cart/Index/New");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var cart = await response.Content.ReadAsAsync<Cart>();
+                    return cart.Guid;
+                }
+                else
+                {
+                    throw new Exception(string.Format("Error at creating new cart: {0}", response.RequestMessage.ToString()));
+                }
+            }
+        }
+
         public async void RemoveCartItem(Func<Cart, int> loadMethod, string guid, int articleId)
         {
             using (var client = Client())
@@ -104,18 +117,18 @@ namespace WPF.DAO
             }
         }
 
-        /*public async void Register(RegisterBindingModel customer)
+        public async void Register(Customer customer)
         {
-            /*using (var client = Client())
+            using (var client = Client())
             {
-                HttpResponseMessage response = await client.PutAsync(
-                    "api/Account/Register", customer);
+                HttpResponseMessage response = await client.PutAsJsonAsync<Customer>(
+                    "api/Customer/Create", customer);
 
                 if (response.IsSuccessStatusCode)
                 {
                     
                 }
             }
-        }*/
+        }
     }
 }

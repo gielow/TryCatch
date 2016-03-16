@@ -24,12 +24,14 @@ namespace WPF
     public partial class MainWindow : Window
     {
         private string CartGuid = string.Empty;
+        private string User = string.Empty;
 
         public MainWindow()
         {
             InitializeComponent();
 
             LoadArticles(0);
+            InitializeCart();
             LoadCart();
 
             btnNext.Click += delegate(object sender, RoutedEventArgs e){ LoadArticles(1); };
@@ -90,7 +92,14 @@ namespace WPF
             var obj = new EcommerceAPI();
             obj.AddCartItem(LoadCartGrid, this.CartGuid, article.Id);
         }
-        
+
+        private void InitializeCart()
+        {
+            var obj = new EcommerceAPI();
+            obj.NewCart().ContinueWith((t) => CartGuid = t.Result);
+
+        }
+
         private void RemoveFromCart(object sender, RoutedEventArgs e)
         {
             OrderItem item = null;
@@ -108,7 +117,11 @@ namespace WPF
 
         private void btnCheckout_Click(object sender, RoutedEventArgs e)
         {
-
+            if (string.IsNullOrEmpty(this.User))
+            {
+                var frmCustomer = new CustomerForm();
+                frmCustomer.ShowDialog();
+            }
         }
     }
 }

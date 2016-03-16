@@ -20,9 +20,9 @@ namespace WPF
     /// <summary>
     /// Interaction logic for Customer.xaml
     /// </summary>
-    public partial class Customer : Window
+    public partial class CustomerForm : Window
     {
-        public Customer()
+        public CustomerForm()
         {
             InitializeComponent();
         }
@@ -35,7 +35,7 @@ namespace WPF
                 return;
             }
 
-            /*var customer = new RegisterBindingModel();
+            var customer = new Customer();
             customer.Title = edTitle.Text;
             customer.FirstName = edFirstName.Text;
             customer.LastName = edFirstName.Text;
@@ -43,9 +43,10 @@ namespace WPF
             customer.ZipCode = edZipCode.Text;
             customer.City = edCity.Text;
             customer.Email = edEmail.Text;
-
+            customer.Password = edPassword.Text;
+            
             var api = new EcommerceAPI();
-            api.Register(customer);*/
+            api.Register(customer);
         }
     }
 }

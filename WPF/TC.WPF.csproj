@@ -92,7 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Customer.xaml">
+    <Page Include="CustomerForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,8 +104,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Customer.xaml.cs">
-      <DependentUpon>Customer.xaml</DependentUpon>
+    <Compile Include="CustomerForm.xaml.cs">
+      <DependentUpon>CustomerForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAO\Api.cs" />
     <Compile Include="MainWindow.xaml.cs">
