@@ -92,15 +92,8 @@ namespace TC_WebShopCaseMVC.Controllers
             return View();
         }
 
-        [HttpPost, HttpPut, EnableJson]
-        [AllowAnonymous]
-        public ActionResult Create(Customer model)
-        {
-            return Create(model, string.Empty);
-        }
-
         // POST: Customer/Create
-        [HttpPost, HttpPut, EnableJson]
+        [HttpPost]
         [AllowAnonymous]
         public ActionResult Create(Customer model, string returnUrl)
         {
@@ -137,7 +130,7 @@ namespace TC_WebShopCaseMVC.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Article");
         }
-        
+
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)
         {

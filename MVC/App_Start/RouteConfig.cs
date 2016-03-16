@@ -52,10 +52,6 @@ namespace TC_WebShopCaseMVC
                 "api/Customer/Login/{customer}",
                 new { controller = "Customer", action = "LoginJson" });
 
-            routes.MapRoute("CustomerCreateApi",
-                "api/Customer/Create/{model}",
-                new { controller = "Customer", action = "Create" });
-
             routes.MapRoute(null,
                 "api/Cart/{guid}/Items/{articleId}/{quantity}",
                 new { controller = "Cart", action = "AddItem" },
