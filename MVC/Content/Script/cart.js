@@ -19,6 +19,7 @@ function itemAction(articleId, quantity, action, message) {
         url: './api/Cart/' + cartGuid + '/Items/' + articleId + '/' + quantity,
         cache: false,
         contentType: 'application/json',
+        headers: { Accept: "application/json" },
         success: function (data) {
             alert(message);
         },
@@ -37,13 +38,14 @@ function getCartGuid() {
         url: './api/Cart/Index/New',
         cache: false,
         contentType: 'application/json',
+        headers: { Accept: "application/json" },
         success: function (data) {
             sessionStorage.setItem("CartGuid", eval(data).Guid);
 
             return eval(data).Guid;
         },
         error: function () {
-            console.error('Error at creating new sessin cart');
+            console.error('Error at creating new session cart');
         }
     });
 }

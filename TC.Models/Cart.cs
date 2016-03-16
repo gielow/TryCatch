@@ -53,7 +53,7 @@ namespace TC.Models
             if (obj2 == null)
                 return false;
 
-            return this.Guid.Equals(obj2.Guid);
+            return string.Equals(this.Guid, obj2.Guid);
         }
 
         public void RemoveArticle(int itemId, int quantity)

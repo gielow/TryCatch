@@ -84,7 +84,7 @@ namespace TC_WebShopCaseMVC.Controllers
             var customer = _repository.Customers.FirstOrDefault(c => c.Email == User.Identity.Name);
             return View(customer);
         }
-        
+
         // GET: Customer/Create
         public ActionResult Create(string returnUrl)
         {
@@ -92,8 +92,15 @@ namespace TC_WebShopCaseMVC.Controllers
             return View();
         }
 
+        [HttpPost, HttpPut, EnableJson]
+        [AllowAnonymous]
+        public ActionResult Create(Customer model)
+        {
+            return Create(model, string.Empty);
+        }
+
         // POST: Customer/Create
-        [HttpPost]
+        [HttpPost, HttpPut, EnableJson]
         [AllowAnonymous]
         public ActionResult Create(Customer model, string returnUrl)
         {

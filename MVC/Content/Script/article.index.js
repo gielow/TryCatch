@@ -5,6 +5,7 @@
         url: './api/Article/Index/' + pageNumber,
         cache: false,
         contentType: 'application/json',
+        headers: { Accept : "application/json"},
         success: function (data) {
             $('#articles > tbody > tr').remove();
             $.each(eval(data), function (index, item) {
