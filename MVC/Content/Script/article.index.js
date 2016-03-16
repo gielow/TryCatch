@@ -1,10 +1,10 @@
 ﻿function loadArticles(pageNumber) {
     //debugger;
     $.ajax({
-        type: 'GET',
+        type: 'GET',        
         url: './api/Article/Index/' + pageNumber,
         cache: false,
-        contentType: 'application/json; charset=utf-8',
+        contentType: 'application/json',
         success: function (data) {
             $('#articles > tbody > tr').remove();
             $.each(eval(data), function (index, item) {

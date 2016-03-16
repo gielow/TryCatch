@@ -17,7 +17,8 @@ namespace TC.Helper
             if (typeof(RedirectToRouteResult).IsInstanceOfType(filterContext.Result))
                 return;
 
-            var acceptTypes = filterContext.HttpContext.Request.AcceptTypes ?? new[] { "text/html" };
+            var acceptTypes = new string[] { filterContext.HttpContext.Request.ContentType } ?? _jsonTypes;
+            //var acceptTypes = filterContext.HttpContext.Request.AcceptTypes ?? _jsonTypes;
 
             var model = filterContext.Controller.ViewData.Model;
 

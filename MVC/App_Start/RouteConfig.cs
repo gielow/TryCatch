@@ -22,31 +22,31 @@ namespace TC_WebShopCaseMVC
 
             routes.MapRoute("OrderDetailsApi",
                 "api/Order/{protocol}/Details",
-                new { controller = "Order", action = "DetailsJson" });
+                new { controller = "Order", action = "Details" });
 
             routes.MapRoute("OrderApi",
                 "api/Order/Index",
-                new { controller = "Order", action = "IndexJson" });
+                new { controller = "Order", action = "Index" });
             
             routes.MapRoute("ArticleApi",
                 "api/Article/Index/{number}",
-                new { controller = "Article", action = "IndexJson" });
+                new { controller = "Article", action = "Index" });
 
             routes.MapRoute("CartNewApi",
                 "api/Cart/Index/New",
-                new { controller = "Cart", action = "NewJson" });
+                new { controller = "Cart", action = "New" });
 
             routes.MapRoute("CartApi",
                 "api/Cart/Index/{guid}",
-                new { controller = "Cart", action = "IndexJson" });
+                new { controller = "Cart", action = "Index" });
 
             routes.MapRoute("CartItemsApi",
                 "api/Cart/{guid}/Items",
-                new { controller = "Cart", action = "ItemsJson" });
+                new { controller = "Cart", action = "Items" });
 
             routes.MapRoute("CartICheckoutApi",
                 "api/Cart/{guid}/Checkout",
-                new { controller = "Cart", action = "CheckoutJson" });
+                new { controller = "Cart", action = "Checkout" });
 
             routes.MapRoute("CustomerLoginApi",
                 "api/Customer/Login/{customer}",
@@ -54,13 +54,13 @@ namespace TC_WebShopCaseMVC
 
             routes.MapRoute(null,
                 "api/Cart/{guid}/Items/{articleId}/{quantity}",
-                new { controller = "Cart", action = "AddItemJson" },
+                new { controller = "Cart", action = "AddItem" },
                 new { httpMethod = new HttpMethodOverrideConstraint("POST", "PUT")
             });
 
             routes.MapRoute(null,
                 "api/Cart/{guid}/Items/{articleId}/{quantity}",
-                new { controller = "Cart", action = "RemoveItemJson" },
+                new { controller = "Cart", action = "RemoveItem" },
                 new { httpMethod = new HttpMethodOverrideConstraint("POST", "DELETE")
             });
 

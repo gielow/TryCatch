@@ -19,37 +19,22 @@ namespace TC_WebShopCaseMVC.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet, EnableJson]
         public ActionResult New()
-        {
-            return View(GetNew());
-        }
-
-        [EnableJson]
-        public JsonResult NewJson()
-        {
-            return Json(GetNew(), JsonRequestBehavior.AllowGet);
-        }
-
-        private Cart GetNew()
         {
             var guid = Guid.NewGuid().ToString();
             _repository.PutCart(new Cart(guid));
             HttpContext.Session["CartGuid"] = guid;
-            return _repository.Carts.FirstOrDefault(c => c.Guid == guid);
-        }
 
-        [HttpGet]
+            return View(_repository.Carts.FirstOrDefault(c => c.Guid == guid));
+        }
+        
+        [HttpGet, EnableJson]
         public ActionResult Index(string guid)
         {
             return View(GetCart(guid));
         }
-
-        [EnableJson]
-        public JsonResult IndexJson(string guid)
-        {
-            return Json(GetCart(guid), JsonRequestBehavior.AllowGet);
-        }
+        
 
         private Cart GetCart(string guid)
         {
@@ -61,43 +46,15 @@ namespace TC_WebShopCaseMVC.Controllers
             return _repository.Carts.FirstOrDefault(c => c.Guid == guid) ?? new Cart();
         }
 
-        [HttpGet]
+        [HttpGet, EnableJson]
         public ActionResult Items(string guid)
         {
-            return View(GetItems(guid));
+            return View(GetCart(guid).Items);
         }
-
-        [EnableJson]
-        public JsonResult ItemsJson(string guid)
-        {
-            return Json(GetItems(guid), JsonRequestBehavior.AllowGet);
-        }
-
-        private IEnumerable<OrderItem> GetItems(string guid)
-        {
-            return GetCart(guid).Items;
-        }
-
-        [HttpPut]
+        
+        [HttpPut, EnableJson]
         [AcceptVerbs("PUT", "POST")]
         public ActionResult AddItem(string guid, int articleId, int quantity)
-        {
-            AddItemCart(guid, articleId, quantity);
-
-            return Index(guid);
-        }
-
-        [EnableJson]
-        [HttpPut]
-        [AcceptVerbs("PUT", "POST")]
-        public JsonResult AddItemJson(string guid, int articleId, int quantity)
-        {
-            AddItemCart(guid, articleId, quantity);
-
-            return IndexJson(guid);
-        }
-
-        private void AddItemCart(string guid, int articleId, int quantity)
         {
             var cart = this.GetCart(guid);
             var article = _repository.Articles.FirstOrDefault(a => a.Id == articleId);
@@ -106,47 +63,24 @@ namespace TC_WebShopCaseMVC.Controllers
 
             cart.AddArticle(article, quantity);
             _repository.PutCart(cart);
+
+            return Index(guid);
         }
 
-        [HttpDelete]
+        [HttpDelete, EnableJson]
         [AcceptVerbs("DELETE", "POST")]
         public ActionResult RemoveItem(string guid, int articleId, int quantity)
-        {
-            return View(RemoveItemCart(guid, articleId, quantity));
-        }
-
-        [EnableJson]
-        [HttpDelete]
-        [AcceptVerbs("DELETE")]
-        public JsonResult RemoveItemJson(string guid, int articleId, int quantity)
-        {
-            return Json(RemoveItemCart(guid, articleId, quantity), JsonRequestBehavior.AllowGet);
-        }
-
-        private Cart RemoveItemCart(string guid, int articleId, int quantity)
         {
             var cart = this.GetCart(guid);
             cart.RemoveArticle(articleId, quantity);
             _repository.PutCart(cart);
 
-            return cart;
+            return Index(guid);
         }
-
+        
         [Authorize]
+        [HttpGet, EnableJson]
         public ActionResult Checkout(string guid)
-        {
-            return View(CartCheckout(guid));
-        }
-
-        [Authorize]
-        [HttpPost]
-        [EnableJson]
-        public JsonResult CheckoutJson(string guid)
-        {
-            return Json(CartCheckout(guid), JsonRequestBehavior.AllowGet);
-        }
-
-        private Order CartCheckout(string guid)
         {
             var cart = _repository.Carts.FirstOrDefault(c => c.Guid == guid);
 
@@ -155,7 +89,7 @@ namespace TC_WebShopCaseMVC.Controllers
                 ModelState.AddModelError("", "Cart not found.");
                 RedirectToAction("Index", "Cart");
 
-                return new Order();
+                return View(new Order());
             }
 
             var customer = _repository.Customers.FirstOrDefault(c => c.Email == User.Identity.Name);
@@ -169,7 +103,7 @@ namespace TC_WebShopCaseMVC.Controllers
             _repository.PutOrder(order);
             _repository.DeleteCart(cart);
 
-            return order;
+            return View(order);
         }
     }
 }

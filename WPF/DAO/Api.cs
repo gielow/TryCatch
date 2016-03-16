@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using TC.Models;
@@ -22,9 +24,14 @@ namespace WPF.DAO
 
         public async void GetArticles(Func<List<Article>, int> loadMethod, int page)
         {
+            //var url = "http://localhost/TC/api/Article/Index/1";
+            //var webClient = new WebClient();
+            //var articles = webClient.DownloadData(url);
+            //DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Article>));
+
             using (var client = Client())
             {
-                HttpResponseMessage response = await client.GetAsync(string.Format("api/Article/page/{0}", page));
+                HttpResponseMessage response = await client.GetAsync(string.Format("api/Article/Index/{0}", page));
 
                 if (response.IsSuccessStatusCode)
                 {

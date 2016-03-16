@@ -20,51 +20,28 @@ namespace TC_WebShopCaseMVC.Controllers
             _repository = repository;
         }
         
-        [HttpGet]
+        [HttpGet, EnableJson]
         public ActionResult Index()
         {
-            return View(GetOrders());
+            return View(_repository.Orders.Where(o => o.Customer.Email == User.Identity.Name));
         }
 
-        [EnableJson]
-        public JsonResult IndexJson()
-        {
-            return Json(GetOrders(), JsonRequestBehavior.AllowGet);
-        }
-
-        private IEnumerable<Order> GetOrders()
-        {
-            return _repository.Orders.Where(o => o.Customer.Email == User.Identity.Name);
-        }
-
-        [HttpGet]
+        [HttpGet, EnableJson]
         public ActionResult Details(int protocol)
-        {
-            return View(GetOrder(protocol));
-        }
-        
-        [EnableJson]
-        public JsonResult DetailsJson(int protocol)
-        {
-            return Json(GetOrder(protocol), JsonRequestBehavior.AllowGet);
-        }
-
-        private Order GetOrder(int protocol)
         {
             var order = _repository.Orders.FirstOrDefault(o => o.Protocol == protocol);
 
             if (order == null)
-                return new Order();
+                return View(new Order());
 
             if (order.Customer.Email != User.Identity.Name)
             {
                 ModelState.AddModelError("", "This order does not belong to you");
-                return new Order();
+                return View(new Order());
             }
-            else
-            {
-                return order;
-            }
+
+            return View(order);
+
         }
     }
 }

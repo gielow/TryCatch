@@ -18,7 +18,7 @@ function itemAction(articleId, quantity, action, message) {
         type: action,
         url: './api/Cart/' + cartGuid + '/Items/' + articleId + '/' + quantity,
         cache: false,
-        contentType: 'application/json; charset=utf-8',
+        contentType: 'application/json',
         success: function (data) {
             alert(message);
         },
@@ -36,7 +36,7 @@ function getCartGuid() {
         type: 'GET',
         url: './api/Cart/Index/New',
         cache: false,
-        contentType: 'application/json; charset=utf-8',
+        contentType: 'application/json',
         success: function (data) {
             sessionStorage.setItem("CartGuid", eval(data).Guid);
 

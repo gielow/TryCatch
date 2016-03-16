@@ -19,24 +19,13 @@ namespace TC_WebShopCaseMVC.Controllers
             _repository = repository;
 	    }
         
-        [HttpGet]
+        [HttpGet, EnableJson]
         public ActionResult Index(int? number)
-        {
-            return View(GetPage(number));
-        }
-        
-        [EnableJson]
-        public JsonResult IndexJson(int? number)
-        {
-            return Json(GetPage(number), JsonRequestBehavior.AllowGet);
-        }
-
-        private IEnumerable<Article> GetPage(int? number)
         {
             if (!number.HasValue)
                 number = 1;
 
-            return _repository.Articles.Skip((number.Value - 1) * 10).Take(10);
+            return View(_repository.Articles.Skip((number.Value - 1) * 10).Take(10).ToList());
         }
     }
 }
