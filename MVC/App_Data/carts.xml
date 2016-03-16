@@ -20,4 +20,77 @@
     <Guid>91c48329-c002-4a27-a417-4024a18d3894</Guid>
     <Items />
   </Cart>
+  <Cart>
+    <Guid>967432af-fadd-4aa8-84d8-53c4eb1b7b1f</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>5d182d82-30b8-49ca-aeef-3ff70178b761</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>bb73a6c3-f82b-4c00-b9eb-3fd633a80a87</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>d2771aec-8c39-468a-91cf-6ac3655531bc</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>9702763b-a789-4732-bd55-fd6fe72dfa3f</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>3c0f125d-7576-4346-ad44-a9cacb8f4c75</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>08ea3cfd-ded6-4e7c-a58c-463c433363c5</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>debb0904-9015-4d0c-8084-285ed2c7bf56</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>d3cfcafe-5535-4718-84cd-a5a4feefc551</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>5d844912-3157-47e8-8985-36a0ed97ad1c</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>323bcf5a-a1f8-4774-b781-c4fff39ee49d</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>8df96661-7bce-430c-9e85-e7eff7a2acbd</Guid>
+    <Items />
+  </Cart>
+  <Cart>
+    <Guid>b7e48656-454c-45be-a684-56af15b4faa8</Guid>
+    <Items>
+      <OrderItem>
+        <Article>
+          <Id>5</Id>
+          <Description>Article 5</Description>
+          <Price>10</Price>
+        </Article>
+        <Quantity>2</Quantity>
+      </OrderItem>
+      <OrderItem>
+        <Article>
+          <Id>1</Id>
+          <Description>Article 1</Description>
+          <Price>10</Price>
+        </Article>
+        <Quantity>4</Quantity>
+      </OrderItem>
+    </Items>
+  </Cart>
+  <Cart>
+    <Guid>27e84921-62a6-4208-81c3-00b01820939d</Guid>
+    <Items />
+  </Cart>
 </ArrayOfCart>

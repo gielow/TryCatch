@@ -23,6 +23,19 @@
     <Password>test</Password>
     <City>Blumenau</City>
     <ZipCode>89057-036</ZipCode>
+    <Carts />
+    <HouseNumber>291</HouseNumber>
+  </Customer>
+  <Customer>
+    <Id>0</Id>
+    <Title>Mr.</Title>
+    <FirstName>André</FirstName>
+    <LastName>Gielow</LastName>
+    <Address>primavera st.</Address>
+    <Email>andre.gielow6@gmail.com</Email>
+    <Password>test</Password>
+    <City>Blumenau</City>
+    <ZipCode>89057-036</ZipCode>
     <HouseNumber>291</HouseNumber>
   </Customer>
 </ArrayOfCustomer>
